@@ -11,7 +11,7 @@ data vmc_connected_accounts "this" {
 }
 
 data vmc_customer_subnets "this" {
-  connected_account_id = data.vmc_connected_accounts.my_accounts.ids[0]
+  connected_account_id = data.vmc_connected_accounts.this.ids[0]
   region               = var.region
 }
 
