@@ -2,6 +2,10 @@ locals {
   aws_account_number = data.terraform_remote_state.aws-core.outputs.account_id
 }
 
+provider "vmc" {
+  refresh_token = var.refresh_token
+}
+
 data vmc_connected_accounts "this" {
   account_number = local.aws_account_number
 }
