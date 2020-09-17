@@ -21,19 +21,22 @@ resource "vmc_sddc" "sddc_1" {
   sddc_name           = var.sddc_name
   vpc_cidr            = var.vpc_cidr
   num_host            = var.sddc_num_hosts
-  provider_type       = "AWS"
+  provider_type       = "ZEROCLOUD"
   region              = var.region
   vxlan_subnet        = var.vxlan_subnet
-  delay_account_link  = false
-  skip_creating_vxlan = false
+  delay_account_link  = true
+  skip_creating_vxlan = true
   sso_domain          = "vmc.local"
+  host_instance_type  = "I3_METAL"
+  sddc_type           = ""
 
   deployment_type = "SingleAZ"
-
+  /*
   account_link_sddc_config {
     customer_subnet_ids  = local.public_subnets
     connected_account_id = local.aws_account_number
   }
+  */
   timeouts {
     create = "300m"
     update = "300m"
